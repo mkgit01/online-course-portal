@@ -17,6 +17,9 @@ const {
   markLectureAsComplete,
 } = require("../controllers/Course")
 
+const { 
+  enrollUserInCourses 
+} = require("../controllers/Payments");
 
 // Categories Controllers Import
 const {
@@ -75,6 +78,8 @@ router.post("/addSubSection", auth, isInstructor, createSubSection)
 router.get("/getAllCourses", getAllCourses)
 // Get Details for a Specific Courses
 router.post("/getCourseDetails", getCourseDetails)
+// Route to enroll in courses
+router.post("/enroll", auth, isStudent, enrollUserInCourses);
 // Edit a Course
 router.post("/editCourse", auth, isInstructor,isDemo, editCourse)
 // Get all Courses of a Specific Instructor
